@@ -1,0 +1,9 @@
+#map{
+    width: 30vw;
+    height: 30vw;
+    float: left;
+}
+#point-picker{
+    height: 30vw;
+    float: left;
+}

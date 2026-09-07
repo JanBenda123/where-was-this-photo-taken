@@ -4,6 +4,7 @@ import {ImagePoint, ImagePointId, MapPoint, MapPointId, PointLink, PointLinkId} 
 import { ImageMapList } from "./ImageMapList";
 import { ImageInterface } from "./ImageInterface";
 import { MapInterface } from "./MapInterface";
+import { ImageMapControls } from "./ImageMapControls";
 
 export function ImageMapAligner(){
 
@@ -115,29 +116,40 @@ export function ImageMapAligner(){
         setFocusedPointId(id);
     }
 
+    const handleSend = () =>{
+        alert("send was pressed")
+    }
+
     return(
         <div style={{ 
             padding: "20px", 
             border: "1px solid black",
+
+            }}>
+            <div style={{ 
             display: "flex",
             flexWrap: "nowrap",
             height: "80vh",     
             }}>
-            <ImageMapList 
-                pointLinks={pointLinks} 
-                imagePoints={imagePoints}
-                mapPoints={mapPoints}
-                focusedPointId={focusedPointId}
-                onEntryDeleteButtonClick={handleEntryDeleteButtonClick}
-                onEntryClick={handleEntryClick}
+                <ImageMapList 
+                    pointLinks={pointLinks} 
+                    imagePoints={imagePoints}
+                    mapPoints={mapPoints}
+                    focusedPointId={focusedPointId}
+                    onEntryDeleteButtonClick={handleEntryDeleteButtonClick}
+                    onEntryClick={handleEntryClick}
+                />
+                <ImageInterface 
+                    onImageClick={handleImageClick}
+                />
+                <MapInterface
+                    onMapClick={handleMapClick}
+                />
+            </div>
+            <ImageMapControls
+                onSend={handleSend}
+            
             />
-            <ImageInterface 
-                onImageClick={handleImageClick}
-            />
-            <MapInterface
-                onMapClick={handleMapClick}
-            />
-
         </div>
     )
 

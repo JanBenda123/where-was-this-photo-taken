@@ -1,11 +1,8 @@
 import { useState, useCallback, useMemo } from "react";
-import {ImagePoint, ImagePointId, MapPoint, MapPointId, PointLink, PointLinkId} from "@shared/types"
+import {ImagePoint, ImagePointId, MapPoint, MapPointId, PointLink, PointLinkId} from "../types"
 
 
-
-
-
-export function useImageMapAligner(){
+export function useAppInterface(){
     const [imagePoints, setImagePoints] = useState<ImagePoint[]>([]);
     const [mapPoints, setMapPoints] = useState<MapPoint[]>([]);
     const [pointLinks, setPointLinks] = useState<PointLink[]>([]);

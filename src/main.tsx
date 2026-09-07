@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import AppInterface from './appInterface/AppInterface'
 
 const rootElement = document.getElementById('root')!
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <App />
+    <AppInterface />
   </React.StrictMode>
 )

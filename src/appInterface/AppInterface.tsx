@@ -1,16 +1,12 @@
-import { useState } from "react";
-import {ImagePoint, ImagePointId, MapPoint, MapPointId, PointLink, PointLinkId} from "@shared/types"
-
-
-import { useImageMapAligner } from "./useImageMapAligner";
+import { useAppInterface } from "./useAppInterface";
 
 import { ImageMapList } from "./ImageMapList";
 import { ImageInterface } from "./ImageInterface";
 import { MapInterface } from "./MapInterface";
-import { ImageMapControls } from "./ImageMapControls";
+import { AppInterfaceControls } from "./AppInterfaceControls";
 
-export function ImageMapAligner(){
-    const { state, handle } = useImageMapAligner();
+export default function AppInterface(){
+    const { state, handle } = useAppInterface();
 
     return(
         <div style={{ 
@@ -38,9 +34,8 @@ export function ImageMapAligner(){
                     onMapClick={handle.mapClick}
                 />
             </div>
-            <ImageMapControls
+            <AppInterfaceControls
                 onSend={handle.send}
-            
             />
         </div>
     )

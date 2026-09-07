@@ -8,9 +8,6 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "strict": true,
-    "paths": {
-      "@shared/*": ["../shared/*"]
-    }
   },
-  "include": ["src", "../shared/**/*", "vite.config.ts"]
+  "include": ["src", "vite.config.ts", "../types.ts"]
 }

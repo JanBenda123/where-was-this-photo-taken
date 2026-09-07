@@ -1,10 +1,10 @@
 
-interface ImageMapControlsProps{
+interface AppInterfaceControlsProps{
     onSend: ()=>void;
 }
 
 
-export function ImageMapControls(props: ImageMapControlsProps){
+export function AppInterfaceControls(props: AppInterfaceControlsProps){
 
     return (
         <div style={{

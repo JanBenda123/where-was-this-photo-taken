@@ -1,5 +1,5 @@
-import { useState, useCallback, useMemo } from "react";
-import {ImagePoint, ImagePointId, MapPoint, MapPointId, PointLink, PointLinkId} from "../types"
+import { useState, useMemo } from "react";
+import {ImagePoint, ImagePointId, MapPoint, MapPointId, PointLink, PointLinkId} from "src/types"
 
 
 export function useAppInterface(){
@@ -36,12 +36,6 @@ export function useAppInterface(){
 
         setIdCounter(idConuter + 1);
         setFocusedPointId(newPointLink.id);
-
-        return {
-            pointLinkId: newPointLink.id,
-            mapPointId: newMapPoint.id,
-            imagePointId: newImagePoint.id
-        };
     }
 
     const deletePointLink = (toDelete: PointLinkId) => {

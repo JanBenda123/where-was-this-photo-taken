@@ -1,4 +1,3 @@
-import { PointLinkId, MapPointId, ImagePointId } from "@shared/types";
 import { useState, ChangeEvent, MouseEvent } from "react";
 
 interface ImageInterfaceProps {

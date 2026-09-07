@@ -9,5 +9,5 @@
     "baseUrl": ".",
     "strict": true,
   },
-  "include": ["src", "vite.config.ts", "../types.ts"]
+  "include": ["src", "vite.config.ts", "src/types.ts"]
 }

@@ -1,4 +1,4 @@
-import {ImagePoint, MapPoint, PointLink,PointLinkId} from "@shared/types"
+import {ImagePoint, MapPoint, PointLink,PointLinkId} from "src/types"
 import { ImageMapListEntry } from "./ImageMapListEntry";
 
 interface ImageMapListProps {

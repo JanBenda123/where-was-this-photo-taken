@@ -64,11 +64,6 @@ export function useImageMapAligner(){
     }
 
 
-
-    const handleImageClick = (x:number, y:number)=>{
-        createPointLink(x,y);
-    }
-
     const handleMapClick = (lat:number, lng:number, alt:number | null)=>{
         if(focusedPointId == null){
             alert("Select an entry from the list on the left");
@@ -108,25 +103,17 @@ export function useImageMapAligner(){
         );
     }
 
-    const handleEntryDeleteButtonClick = (id: PointLinkId)=>{
-        deletePointLink(id);
-    }
-
-    const handleEntryClick = (id: PointLinkId)=>{
-        setFocusedPointId(id);
-    }
-
     const handleSend = () =>{
         alert("send was pressed")
     }
 
     const handle = useMemo(()=>({
-        imageClick             : handleImageClick,
+        imageClick             : createPointLink,
         mapClick               : handleMapClick,
-        entryDeleteButtonClick : handleEntryDeleteButtonClick,
-        entryClick             : handleEntryClick,
+        entryDeleteButtonClick : deletePointLink,
+        entryClick             : setFocusedPointId,
         send                   : handleSend
-    }),[handleImageClick,handleMapClick,handleEntryDeleteButtonClick,handleEntryClick,handleSend])
+    }),[createPointLink,handleMapClick,deletePointLink,setFocusedPointId,handleSend])
 
 
     return {

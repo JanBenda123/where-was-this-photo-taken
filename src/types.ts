@@ -2,21 +2,34 @@ export type ImagePointId = string & {readonly __brand: unique symbol};
 export type MapPointId = string & {readonly __brand: unique symbol};
 export type PointLinkId = string & {readonly __brand: unique symbol};
 
-export interface ImagePoint {
-  id: ImagePointId;
+
+export interface ImageCoord{
   x: number;
   y: number;
 }
 
-export interface MapPoint {
+
+export interface GeoCoord{
+  lat: number;
+  lng: number;
+  alt: number;
+}
+
+
+type Nullable<T> = {
+  [P in keyof T]: T[P] | null;
+}
+
+export interface ImagePoint extends ImageCoord{
+  id: ImagePointId;
+}
+
+export interface MapPoint extends Nullable<GeoCoord> {
   id: MapPointId;
-  lat: number | null;
-  lng: number | null;
-  alt: number | null;
 }
 
 export interface PointLink {
   id: PointLinkId;
   imagePointId: ImagePointId;
-  mapPointId: MapPointId;
+  mapPointId: MapPointId | null;
 }

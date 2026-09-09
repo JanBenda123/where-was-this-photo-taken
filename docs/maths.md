@@ -27,11 +27,11 @@ Just taking the linear approximation in this point would leave us with a rotated
 Luckily, the system has otrhogonal basis in which knowing the vectors' norm is enough to easily construct the coordinate system established earlier, using
 
 $$
-\begin{aligned}
-\|\mathbf{e}_\phi\| &= \left\|\frac{\partial{\mathbf{r}}}{\partial{\phi}}\right\|=\frac{a(1-e^2)}{(1-e^2\sin^2\phi)^{\frac{3}{2}}}+h \,,\\
-\|\mathbf{e}_\lambda\| &= \left\|\frac{\partial{\mathbf{r}}}{\partial{\lambda}}\right\| = (R(\phi)+h)\cos\phi \,,\\
-\|\mathbf{e}_h\| &= \left\|\frac{\partial{\mathbf{r}}}{\partial{h}}\right\|=1\,,
-\end{aligned}
+
+\|\mathbf{e}_\phi\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{\phi}}\right\|=\frac{a(1-e^2)}{(1-e^2\sin^2\phi)^{\frac{3}{2}}}+h \,,\\
+\|\mathbf{e}_\lambda\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{\lambda}}\right\| = (R(\phi)+h)\cos\phi \,,\\
+\|\mathbf{e}_h\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{h}}\right\|=1\,,
+
 $$
 
 as 

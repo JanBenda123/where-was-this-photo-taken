@@ -6,6 +6,7 @@ This document explains the mathematical background of this project. Cause even (
 
 Earth's geographical coordinates are usually represented using WGS 84 system, which unlike spherical coordinates also accounts for the ellipsoidal shape of the Earth.
 Its parametrization looks like
+
 $$
 \mathbf{r} = \begin{pmatrix}
 (R(\phi)+h)\cos\phi\cos\lambda \\
@@ -13,9 +14,11 @@ $$
 (R(\phi)(1-e^2)+h)\sin\phi
 \end{pmatrix}\,,
 $$
+
 $$
 R(\phi) = \frac{a}{\sqrt{1-e^2\sin^2\phi}}\,
 $$
+
 where $a= 6\ 378\ 137\text{ m}$ is the semi-major axis of the Earth (equatorial radius) and $e\approx0,0818$ is the Earth's excentricity.
 
 To make the calculations easier, we esablish locally linear coordinate system with the $x$ axis pointing in the northern direction, $y$ axis in the eastern direction and $z$ axis pointing upwards.

@@ -27,7 +27,6 @@ Just taking the linear approximation in this point would leave us with a rotated
 Luckily, the system has otrhogonal basis in which knowing the vectors' norm is enough to easily construct the coordinate system established earlier, using
 
 $$
-
 \|\mathbf{e}_\phi\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{\phi}}\right\|=\frac{a(1-e^2)}{(1-e^2\sin^2\phi)^{\frac{3}{2}}}+h \,,
 $$
 
@@ -42,25 +41,7 @@ $$
 as 
 
 $$
-\begin{pmatrix}
-x\\
-y\\
-z
-\end{pmatrix} = 
-
-\begin{pmatrix}
-\|\mathbf{e}_\phi\| & 0 & 0\\
-0 & \|\mathbf{e}_\lambda\| & 0\\
-0 & 0 & \|\mathbf{e}_h\|
-
-\end{pmatrix} 
-
-\begin{pmatrix}
-\phi\\
-\lambda\\
-h
-\end{pmatrix}\,.
-
+\begin{pmatrix}x\\ y\\ z \end{pmatrix} = \begin{pmatrix} \|\mathbf{e}_\phi\| & 0 & 0\\ 0 & \|\mathbf{e}_\lambda\| & 0\\ 0 & 0 & \|\mathbf{e}_h\| \end{pmatrix}  \begin{pmatrix} \phi\\ \lambda\\ h \end{pmatrix}\,.
 $$
 
 ## Image reconstruction

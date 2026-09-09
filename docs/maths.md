@@ -41,7 +41,13 @@ $$
 as 
 
 $$
-\begin{pmatrix}x\\ y\\ z \end{pmatrix} = \begin{pmatrix} \|\mathbf{e}_\phi\| & 0 & 0\\ 0 & \|\mathbf{e}_\lambda\| & 0\\ 0 & 0 & \|\mathbf{e}_h\| \end{pmatrix}  \begin{pmatrix} \phi\\ \lambda\\ h \end{pmatrix}\,.
+\begin{pmatrix}x\\ 
+y\\ 
+z \end{pmatrix} = \begin{pmatrix} \|\mathbf{e}_\phi\| & 0 & 0\\ 
+0 & \|\mathbf{e}_\lambda\| & 0\\ 
+0 & 0 & \|\mathbf{e}_h\| \end{pmatrix}  \begin{pmatrix} \phi\\ 
+\lambda\\ 
+h \end{pmatrix}\,.
 $$
 
 ## Image reconstruction

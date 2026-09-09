@@ -28,8 +28,14 @@ Luckily, the system has otrhogonal basis in which knowing the vectors' norm is e
 
 $$
 
-\|\mathbf{e}_\phi\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{\phi}}\right\|=\frac{a(1-e^2)}{(1-e^2\sin^2\phi)^{\frac{3}{2}}}+h \,,\\
-\|\mathbf{e}_\lambda\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{\lambda}}\right\| = (R(\phi)+h)\cos\phi \,,\\
+\|\mathbf{e}_\phi\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{\phi}}\right\|=\frac{a(1-e^2)}{(1-e^2\sin^2\phi)^{\frac{3}{2}}}+h \,,
+$$
+
+$$
+\|\mathbf{e}_\lambda\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{\lambda}}\right\| = (R(\phi)+h)\cos\phi \,,
+$$
+
+$$
 \|\mathbf{e}_h\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{h}}\right\|=1\,,
 
 $$

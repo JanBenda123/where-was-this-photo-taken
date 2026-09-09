@@ -36,8 +36,7 @@ $$
 $$
 
 $$
-\|\mathbf{e}_h\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{h}}\right\|=1\,,
-
+\|\mathbf{e}_h\| = \left\|\frac{\partial{\mathbf{r}}}{\partial{h}}\right\|=1 \,,
 $$
 
 as 

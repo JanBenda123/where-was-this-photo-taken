@@ -1,6 +1,7 @@
 import { GeoCoord } from "src/types";
 import { CartesianCoord } from "./servicesTypes";
 
+
 export class GeoCartConvertor{
     private refGeo: GeoCoord;   // WGS 84 coordinates of the reference point
     private jacobiLng: number; 
@@ -39,9 +40,9 @@ export class GeoCartConvertor{
     }
 
     /**
-     * Converts local cartezian coordinate to geographic coordinate
+     * Converts local cartesian coordinate to geographic coordinate
      * @param cart local cartesian coordinate to be converted to geographic coordinetes
-     * @returns geographic coordinates of provided local cartezian coordinate
+     * @returns geographic coordinates of provided local cartesian coordinate
      */
     public cartToGeo(cart: CartesianCoord): GeoCoord {
         let dLat = cart[1] / this.jacobiLat;

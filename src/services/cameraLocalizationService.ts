@@ -1,13 +1,17 @@
-import {GeoCoord, ImagePoint, MapPoint, MapPointId, PointLink} from "src/types"
+import { GeoCoord, ImagePoint, MapPoint, MapPointId, PointLink, ImageCoord } from "src/types"
 import { flatten } from "./preprocessing";
-import { FlatImageGeo } from "./servicesTypes";
-import { GeoCartConvertor } from "./geoCartConvertor";
+import { FlatImageCart, FlatImageGeo } from "./servicesTypes";
+import { GeoCartConvertor } from "./converters/geoCartConvertor";
+import { RefPointChoosingStrategy } from "./converters/refPointChoosingStrategy";
+import { LocalizationModel } from "./solver/localizationModel";
+import { LocalizationTrainer } from "./solver/localizationTrainer";
+
 
 export interface cameraLocalizationTaskPayload{
     pointLinks: PointLink[];
     imagePoints: ImagePoint[];
     mapPoints: MapPoint[];
-    imageResolution:ImagePoint[];
+    imageResolution:ImageCoord;
 }
 
 export interface cameraLocalizationTaskResult{
@@ -15,14 +19,31 @@ export interface cameraLocalizationTaskResult{
 }
 
 
-
 export async function execute (args: cameraLocalizationTaskPayload): Promise<cameraLocalizationTaskResult>{
 
-    const flattenedArgs :FlatImageGeo = flatten(args.pointLinks, args.imagePoints, args.mapPoints);
+    const flattenedArgs : FlatImageGeo = flatten(args.pointLinks, args.imagePoints, args.mapPoints);
 
-    const refGeo : GeoCoord = flattenedArgs.geo[0]; // TEMPORARY - later replace with average
+    const refGeo : GeoCoord = RefPointChoosingStrategy.pickFirst(flattenedArgs.geo);
     
     const converter = new GeoCartConvertor(refGeo);
+
+    const flattenedConverted : FlatImageCart = {
+        pix: flattenedArgs.pix,
+        cart: flattenedArgs.geo.map(converter.geoToCart) // converts everything to local cartesian
+    }
+
+
+    const model = new LocalizationModel(args.imageResolution);
+    const trainer = new LocalizationTrainer(model,flattenedConverted);
+
+    trainer.train();
+
+    console.log(model.getParams());
+
+    trainer.dispose();
+
+    
+
     
     
     

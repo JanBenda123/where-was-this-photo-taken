@@ -20,10 +20,14 @@
     "vite-tsconfig-paths": "^6.1.1"
   },
   "dependencies": {
+    "@tensorflow/tfjs-node": "^4.22.0",
     "@types/leaflet": "^1.9.22",
     "leaflet": "^1.9.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-leaflet": "^5.0.0"
+  },
+  "allowScripts": {
+    "@tensorflow/tfjs-node@4.22.0": true
   }
 }

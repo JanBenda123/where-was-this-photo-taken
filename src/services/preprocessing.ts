@@ -1,8 +1,5 @@
-import {GeoCoord, ImagePoint,  MapPoint,  PointLink} from "src/types"
+import { GeoCoord, ImagePoint,  MapPoint,  PointLink } from "src/types"
 import { CartesianCoord, FlatImageGeo } from "./servicesTypes";
-
-
-
 
 
 /**

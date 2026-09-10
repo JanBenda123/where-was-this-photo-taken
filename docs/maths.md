@@ -21,7 +21,7 @@ $$
 
 where $a= 6\ 378\ 137\text{ m}$ is the semi-major axis of the Earth (equatorial radius) and $e\approx0,0818$ is the Earth's excentricity.
 
-To make the calculations easier, we esablish locally linear coordinate system with the $x$ axis pointing in the northern direction, $y$ axis in the eastern direction and $z$ axis pointing upwards.
+To make the calculations easier, we esablish locally linear coordinate system with the $x$ axis pointing in the eastern direction, $y$ axis in the northern direction and $z$ axis pointing upwards.
 To linearize the system we pick a point about which we linearize the system - we call it a reference point.
 Just taking the linear approximation in this point would leave us with a rotated system tangent to the Earth's surface. 
 Luckily, the system has otrhogonal basis in which knowing the vectors' norm is enough to easily construct the coordinate system established earlier, using

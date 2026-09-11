@@ -12,15 +12,22 @@ export class LocalizationModel{
 
     private imageCenter: tf.Tensor;
 
+    private distanceNormalizer: tf.Tensor;
+    private pixNormalizer: tf.Tensor;
+
     constructor(imageRes: ImageCoord){
-        this.translation = tf.variable(tf.tensor1d([0.0, 0.0, 0.0]));
+        this.translation = tf.variable(tf.tensor1d([1.0, 1.0, 0.0]));
         this.thetaX = tf.variable(tf.scalar(0.0));
         this.thetaY = tf.variable(tf.scalar(0.0));
         this.thetaZ = tf.variable(tf.scalar(0.0));
 
+        this.camCenterZ = tf.variable(tf.scalar(1));
+
+        this.pixNormalizer = tf.tensor((imageRes.x+imageRes.y)/2);
+        this.distanceNormalizer = tf.scalar(100);
         this.imageCenter = tf.tensor1d([imageRes.x / 2, imageRes.y / 2]);
 
-        this.camCenterZ = tf.variable(tf.scalar(imageRes.x + imageRes.y));
+        
     }
 
     /**
@@ -63,7 +70,7 @@ export class LocalizationModel{
 
 
     public predict(inputPoints: tf.Tensor2D): tf.Tensor2D {
-        const camToPoint = tf.sub(inputPoints, this.translation);
+        const camToPoint = tf.sub(inputPoints.div(this.distanceNormalizer), this.translation);
 
         const Rx = this.rotationMatrixFactory(this.thetaX, 'x');
         const Ry = this.rotationMatrixFactory(this.thetaY, 'y');
@@ -76,7 +83,16 @@ export class LocalizationModel{
         const Vxy = V.slice([0, 0], [-1, 2]);   // [BS, 2]
         const Vz = V.slice([0, 2], [-1, 1]);    // [BS, 1]
 
-        let predPix = Vxy.div(Vz).mul(this.camCenterZ) as tf.Tensor2D;
+        const eps = 1e-6;
+        const safeVz = tf.where(
+            tf.greaterEqual(Vz, 0),
+            tf.maximum(Vz, eps),
+            tf.minimum(Vz, -eps)
+        );
+
+        let predPix = Vxy.div(safeVz).mul(this.camCenterZ) as tf.Tensor2D;
+
+        predPix = predPix.mul(this.pixNormalizer)
 
         predPix = predPix.add(this.imageCenter);
 
@@ -85,7 +101,10 @@ export class LocalizationModel{
     
 
     public getParams() {
-        const [x, y, z] = Array.from(this.translation.dataSync());
+        const rawTranslation = Array.from(this.translation.dataSync());
+        const scale = this.distanceNormalizer.dataSync()[0];
+
+        const [x, y, z] = rawTranslation.map(val => val * scale);
         const rx = this.thetaX.dataSync()[0];
         const ry = this.thetaY.dataSync()[0];
         const rz = this.thetaZ.dataSync()[0];
@@ -107,5 +126,7 @@ export class LocalizationModel{
     this.thetaZ.dispose();
     this.camCenterZ.dispose();
     this.imageCenter.dispose();
+    this.distanceNormalizer.dispose();
+    this.pixNormalizer.dispose();
   }
 }

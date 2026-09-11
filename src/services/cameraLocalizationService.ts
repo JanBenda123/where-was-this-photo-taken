@@ -29,7 +29,7 @@ export async function execute (args: cameraLocalizationTaskPayload): Promise<cam
 
     const flattenedConverted : FlatImageCart = {
         pix: flattenedArgs.pix,
-        cart: flattenedArgs.geo.map(converter.geoToCart) // converts everything to local cartesian
+        cart: flattenedArgs.geo.map((g) => converter.geoToCart(g)) // converts everything to local cartesian
     }
 
 

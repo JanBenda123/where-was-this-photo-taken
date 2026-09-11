@@ -1,7 +1,9 @@
 import { useState, ChangeEvent, MouseEvent } from "react";
+import { ImageCoord } from "src/types";
 
 interface ImageInterfaceProps {
     onImageClick: (x: number, y: number) => void;
+    onImageLoad:(imageSize: ImageCoord) => void
 }
 
 export function ImageInterface(props: ImageInterfaceProps) {
@@ -12,6 +14,15 @@ export function ImageInterface(props: ImageInterfaceProps) {
         if (file) {
             const url = URL.createObjectURL(file);
             setImageUrl(url);
+
+            const img = new Image();
+            img.onload = () => {
+                props.onImageLoad({
+                    x: img.naturalWidth,
+                    y: img.naturalHeight,
+                });
+            };
+            img.src = url;
         }
     };
 

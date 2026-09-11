@@ -1,5 +1,5 @@
 import {ImagePoint, MapPoint, PointLink,PointLinkId} from "src/types"
-import { ImageMapListEntry } from "./ImageMapListEntry";
+import { ImageMapListEntry } from "src/appInterface/interfaceList/ImageMapListEntry";
 
 interface ImageMapListProps {
     pointLinks: PointLink[];

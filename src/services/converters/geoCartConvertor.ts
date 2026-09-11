@@ -1,5 +1,5 @@
 import { GeoCoord } from "src/types";
-import { CartesianCoord } from "./servicesTypes";
+import { CartesianCoord } from "src/services/servicesTypes";
 
 
 export class GeoCartConvertor{

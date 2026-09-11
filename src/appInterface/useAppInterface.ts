@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import {ImagePoint, ImagePointId, MapPoint, MapPointId, PointLink, PointLinkId} from "src/types"
+import { execute } from "src/services/cameraLocalizationService";
+import {ImageCoord, ImagePoint, ImagePointId, MapPoint, MapPointId, PointLink, PointLinkId} from "src/types"
 
 
 export function useAppInterface(){
@@ -9,6 +10,8 @@ export function useAppInterface(){
 
     const [idConuter, setIdCounter] = useState(0);
     const [focusedPointId, setFocusedPointId] = useState<PointLinkId | null>(null);
+
+    const [imageSize, setImageSize] = useState<ImageCoord | undefined>(undefined)
 
     const state = {imagePoints, mapPoints, pointLinks, focusedPointId}
 
@@ -94,8 +97,18 @@ export function useAppInterface(){
         );
     }
 
-    const handleSend = () =>{
-        alert("send was pressed")
+    const handleSend = async () =>{
+        if(!imageSize){
+            alert("Upload an image, select at least 4 points and ssign coordinates to them")
+            return
+        }
+
+        await execute({
+            pointLinks: pointLinks,
+            imagePoints: imagePoints,
+            mapPoints: mapPoints,
+            imageResolution:imageSize
+        })
     }
 
     const handle = useMemo(()=>({
@@ -103,8 +116,9 @@ export function useAppInterface(){
         mapClick               : handleMapClick,
         entryDeleteButtonClick : deletePointLink,
         entryClick             : setFocusedPointId,
-        send                   : handleSend
-    }),[createPointLink,handleMapClick,deletePointLink,setFocusedPointId,handleSend])
+        send                   : handleSend,
+        imageLoad              : setImageSize
+    }),[createPointLink,handleMapClick,deletePointLink,setFocusedPointId,handleSend, setImageSize])
 
 
     return {

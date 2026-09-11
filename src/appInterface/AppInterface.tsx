@@ -1,6 +1,6 @@
 import { useAppInterface } from "./useAppInterface";
 
-import { ImageMapList } from "./ImageMapList";
+import { ImageMapList } from "./interfaceList/ImageMapList";
 import { ImageInterface } from "./ImageInterface";
 import { MapInterface } from "./MapInterface";
 import { AppInterfaceControls } from "./AppInterfaceControls";
@@ -29,6 +29,7 @@ export default function AppInterface(){
                 />
                 <ImageInterface 
                     onImageClick={handle.imageClick}
+                    onImageLoad={handle.imageLoad}
                 />
                 <MapInterface
                     onMapClick={handle.mapClick}
